@@ -1,0 +1,8 @@
+.Pagos {
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: calc(100vh - 90px);
+  min-height: 500px;
+}

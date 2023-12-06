@@ -1,0 +1,43 @@
+.detallesSolicitudLote {
+  margin-top: 1rem;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+#insertar {
+  margin-bottom: 7px;
+}
+
+label {
+  margin-right: 5px;
+}
+#terrenos {
+  text-align: center !important;
+}
+.textModal {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10rem;
+  align-items: center;
+}
+table {
+  border-collapse: collapse;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  border: 1px solid #000;
+}
+th {
+  background-color: #182b3c;
+  border-bottom: solid 5px #182b3c;
+  color: white;
+}
+td,
+th {
+  padding: 20px;
+  border: 1px solid #182b3c;
+}
+
+td:last-child {
+  padding: 1px;
+}
