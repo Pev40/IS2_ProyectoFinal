@@ -62,13 +62,6 @@ function Proyecciones() {
     setTotalDolaresIntervalo(_projectionInterval.Dolares);
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  // useEffect(() => {
-  //   projectionInterval();
-  //   projectionSpecific();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
   useEffect(() => {
     if (mesesDesde && mesesHasta && añosDesde && añosHasta) {
       projectionInterval();
