@@ -4,7 +4,6 @@ import "./styles.css";
 
 const Login = () => {
   return (
-    <>
       <Container maxWidth="xs" sx={{ paddingTop: "2em" }}>
         <Typography
           variant="h4"
@@ -18,7 +17,6 @@ const Login = () => {
         </Typography>
         <LoginForm />
       </Container>
-    </>
   );
 };
 
