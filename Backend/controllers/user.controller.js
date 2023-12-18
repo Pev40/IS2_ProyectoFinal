@@ -36,7 +36,6 @@ class UserController{
     /**
      * Controladores para CDUV
      */
-    constructor(){}
     async createCliente(Nombre,Direccion,Localidad,DNI,Telefono,Correo,NombreCoo,TelefonoCoo){
         if(NombreCoo === null && TelefonoCoo == null){
             var result = clienteDb.createSinCoopropietario(Nombre,Direccion,Localidad,DNI,Telefono,Correo);
