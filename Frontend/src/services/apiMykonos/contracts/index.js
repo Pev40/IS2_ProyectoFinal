@@ -3,12 +3,19 @@ import { contratosFields, cuotasFields } from "models/Pagos.model";
 import { roundJS } from "utils/cuotas";
 import { del, get, patch, post } from "../api.service";
 
+// Función para manejar errores y agregar lógica específica si es necesario
+const handleApiError = (functionName, error) => {
+  console.error(`Error in ${functionName}:`, error);
+  throw error;
+};
+
 export const getContracts = async () => {
   try {
     const res = await get({
       url: "contratos",
     });
     if (res?.status === "ERROR") throw res;
+
     res.forEach((contract) => {
       contract.id = contract.idContrato;
       contract[contratosFields.deudaPendiente] = roundJS(
@@ -26,7 +33,7 @@ export const getContracts = async () => {
 
     return res;
   } catch (error) {
-    throw error;
+    handleApiError("getContracts", error);
   }
 };
 
@@ -40,10 +47,11 @@ export const getContract = async ({ id }) => {
       body: true,
     });
     if (res?.status === "ERROR") throw res;
+
     res.forEach((contract, i) => (contract.id = contract.idContrato));
     return res[0];
   } catch (error) {
-    throw error;
+    handleApiError("getContract", error);
   }
 };
 
@@ -57,7 +65,7 @@ export const createContract = async ({ data }) => {
     if (res?.status === "ERROR" || res?.status === "error") throw res;
     return res;
   } catch (error) {
-    throw error;
+    handleApiError("createContract", error);
   }
 };
 
@@ -71,7 +79,7 @@ export const deleteContract = async ({ id }) => {
     if (res?.status === "ERROR") throw res;
     return res;
   } catch (error) {
-    throw error;
+    handleApiError("deleteContract", error);
   }
 };
 
@@ -85,31 +93,36 @@ export const getCuotas = async ({
       url: "pagos/cliente",
       data: { idContrato: id },
     });
+
     if (res?.status === "ERROR") throw res;
+
     if (custom) {
       const customRes = new Array(res.length);
       res.forEach((cuota, i) => {
+        const formattedDate = format(new Date(cuota.FechaDePago), "yyyy-MM-dd");
+        let estado;
+
+        if (nombreEstado) {
+          estado = cuota.Nombre;
+        } else {
+          estado = cuota.idEstadoDePago === 3 ? 2 : cuota.idEstadoDePago;
+        }
+
         customRes[i] = {
           id: cuota.idPago,
           [cuotasFields.tipo]: cuota["Tipo de Pago"],
-          [cuotasFields.fecha]: format(
-            new Date(cuota.FechaDePago),
-            "yyyy-MM-dd"
-          ),
+          [cuotasFields.fecha]: formattedDate,
           [cuotasFields.monto]: cuota.Monto,
-          [cuotasFields.estado]: nombreEstado
-            ? cuota.Nombre
-            : cuota.idEstadoDePago === 3
-            ? 2
-            : cuota.idEstadoDePago,
+          [cuotasFields.estado]: estado,
           [cuotasFields.saldo]: cuota.Saldo,
         };
       });
       return customRes;
     }
+
     return res;
   } catch (error) {
-    throw error;
+    handleApiError("getCuotas", error);
   }
 };
 
@@ -123,7 +136,7 @@ export const updateCuota = async ({ data }) => {
     if (res?.status === "ERROR") throw res;
     return res;
   } catch (error) {
-    throw error;
+    handleApiError("updateCuota", error);
   }
 };
 
@@ -137,7 +150,7 @@ export const getProyectionSpecific = async ({ data }) => {
     if (res?.status === "ERROR") throw res;
     return res;
   } catch (error) {
-    throw error;
+    handleApiError("getProyectionSpecific", error);
   }
 };
 
@@ -151,6 +164,6 @@ export const getProyectionInterval = async ({ data }) => {
     if (res?.status === "ERROR") throw res;
     return res;
   } catch (error) {
-    throw error;
+    handleApiError("getProyectionInterval", error);
   }
 };

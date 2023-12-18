@@ -9,6 +9,7 @@ export const getLots = async () => {
     res.forEach((lot) => (lot.id = lot.idLote));
     return res;
   } catch (error) {
+    logError("error", error);
     throw error;
   }
 };
@@ -35,6 +36,7 @@ export const getLotsLN = async (filter = false) => {
 
     return customRes;
   } catch (error) {
+    logError("error", error);
     throw error;
   }
 };
@@ -48,6 +50,7 @@ export const getLot = async ({ id }) => {
     res.forEach((lot, i) => (lot.id = lot.idLote));
     return res[0];
   } catch (error) {
+    logError("error", error);
     throw error;
   }
 };
@@ -62,6 +65,7 @@ export const updateLot = async ({ data }) => {
     if (res?.status === "ERROR") throw res;
     return res;
   } catch (error) {
+    logError("error", error);
     throw error;
   }
 };
