@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { TextField, Autocomplete } from "@mui/material";
 import { textFieldStyles } from "components/General/TextField";
 import { pagosFields } from "models/Pagos.model";
@@ -5,8 +6,8 @@ import { useEffect, useState } from "react";
 import { periodRegex } from "utils/regex";
 import { usePagos } from "contexts/PagosContext";
 
-const FormStepOne = ({ clients, lots, dolar }) => {
-  const { pagos, setPagos, setIsDisabledNext, projects, divisas } = usePagos();
+const FormStepOne = ({ clients, lots, dolar, projects, divisas }) => {
+  const { pagos, setPagos, setIsDisabledNext } = usePagos();
 
   const [cliente, setCliente] = useState(pagos[pagosFields.cliente] || "");
   const [proyecto, setProyecto] = useState(pagos[pagosFields.proyecto] || 1);
@@ -32,7 +33,6 @@ const FormStepOne = ({ clients, lots, dolar }) => {
   );
 
   const handleFormStepOneForm = () => {
-    // e.preventDefault();
     const resStepOne = {
       [pagosFields.cliente]: cliente,
       [pagosFields.proyecto]: proyecto,
@@ -101,9 +101,9 @@ const FormStepOne = ({ clients, lots, dolar }) => {
         {...textFieldStyles}
         label="Precio"
         onChange={({ target: { value } }) => {
-          // eslint-disable-next-line eqeqeq
-          if (value == 0) setPrecio(value);
-          if (periodRegex.test(value)) setPrecio(value);
+          if (value === "0" || periodRegex.test(value)) {
+            setPrecio(value);
+          }
         }}
         value={precio}
       />
@@ -111,4 +111,15 @@ const FormStepOne = ({ clients, lots, dolar }) => {
   );
 };
 
+FormStepOne.propTypes = {
+  clients: PropTypes.array.isRequired,
+  lots: PropTypes.array.isRequired,
+  dolar: PropTypes.number.isRequired,
+  projects: PropTypes.array.isRequired,
+  divisas: PropTypes.array.isRequired,
+};
+
 export default FormStepOne;
+
+
+

@@ -1,6 +1,6 @@
+import React from "react";
 import { useSnackbar } from "contexts/SnackbarContext";
 import apiMykonos from "services/apiMykonos";
-
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   DialogTitle,
@@ -53,7 +53,7 @@ const FormClientesEdit = ({
       openSnackbar({ text: "Cliente modificado correctamente" });
     } catch (error) {
       console.error(error);
-      openSnackbar({ severety: "error", text: "Error al modificar cliente" });
+      openSnackbar({ severity: "error", text: "Error al modificar cliente" });
     }
   };
 
@@ -142,3 +142,4 @@ const FormClientesEdit = ({
 };
 
 export default FormClientesEdit;
+

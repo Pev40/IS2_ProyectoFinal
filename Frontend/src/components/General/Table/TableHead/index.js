@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import {
   TableHead as CustomTableHead,
   TableRow,
@@ -34,4 +36,12 @@ const TableHead = ({ columns, order, orderBy, onRequestSort }) => {
   );
 };
 
+TableHead.propTypes = {
+  columns: PropTypes.array.isRequired,
+  order: PropTypes.oneOf(["asc", "desc"]).isRequired,
+  orderBy: PropTypes.string.isRequired,
+  onRequestSort: PropTypes.func.isRequired,
+};
+
 export default TableHead;
+

@@ -45,7 +45,7 @@ const FormStepTwo = () => {
         label="Fecha Cuotas Monto Inicial"
         InputLabelProps={{ shrink: true }}
         onChange={({ target: { value } }) => {
-          // new Date(value) !== "Invalid Date" && !isNaN(new Date(value));
+          
           const date = new Date(value);
           if (!Number.isNaN(date.getTime())) {
             date.setDate(date.getDate() + 1);
