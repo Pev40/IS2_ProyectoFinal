@@ -46,14 +46,15 @@ class UserController {
      * Controladores para CDUV
      */
     async createCliente(Nombre, Direccion, Localidad, DNI, Telefono, Correo, NombreCoo, TelefonoCoo) {
+        let resultCreateCliente;
+    
         try {
-            let resultCreateCliente;
             if (NombreCoo === null && TelefonoCoo == null) {
                 resultCreateCliente = await clienteDb.createSinCoopropietario(Nombre, Direccion, Localidad, DNI, Telefono, Correo);
             } else {
                 resultCreateCliente = await clienteDb.createConCoopropietario(Nombre, Direccion, Localidad, DNI, Telefono, Correo, NombreCoo, TelefonoCoo);
             }
-
+    
             const dataCreateCliente = resultCreateCliente;
             return dataCreateCliente;
         } catch (err) {
@@ -61,6 +62,7 @@ class UserController {
             return null;
         }
     }
+    
 
     async deleteCliente(DNI) {
         try {
