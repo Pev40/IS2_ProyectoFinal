@@ -7,13 +7,11 @@ const esBisiesto = (year) => {
             year % 4 === 0;
 };
 
-
 function roundJS(number) {
     return Math.round(number * 100) / 100;
 }
-class PagosController {
 
-    constructor() { }
+class PagosController {
 
     async getPagosCliente(idContrato) {
         let result = PagosDb.verPagosCliente(idContrato);
@@ -138,13 +136,15 @@ class PagosController {
                 let fecha = coutaFinanciada.fecha;
                 let saldo = coutaFinanciada.saldo;
                 await PagosDb.createPagoFinanciamiento(idLote, monto, fecha, saldo);
-        }
+            }
 
-        const data = await Promise.resolve(null);
-        return data;
-      } catch (error) {
-        return new Error('Problema en el controlador de pagos, atte. TI');
-      }
+            const data = await Promise.resolve(null);
+            return data;
+        } catch (error) {
+            return new Error('Problema en el controlador de pagos, atte. TI');
+        }
     }
 
 }
+
+module.exports = PagosController;
