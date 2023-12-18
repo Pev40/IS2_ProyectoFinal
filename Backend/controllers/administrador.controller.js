@@ -11,11 +11,11 @@ const AdministradorModel = require("../models/administrador.model");
 const administradorDb = new AdministradorModel();
 
 class AdministradorController {
-  constructor() {}
+  
   async createAdministrador(
     Nombres,Apellidos,DNI,Email,Password
   ) {
-    var result = administradorDb.createAsincrono(
+    let result = administradorDb.createAsincrono(
       Nombres,Apellidos,DNI,Email,Password
     );
 
@@ -30,7 +30,7 @@ class AdministradorController {
   }
 
   async getAdministradores() {
-    var result = administradorDb.getAll();
+    let result = administradorDb.getAll();
     const data = await result.catch((err) => {
       console.log("Controller Error: ", err);
       return null;
@@ -39,17 +39,17 @@ class AdministradorController {
   }
 
   async getAdministradoresPorToken(TOKEN) {
-    var result = administradorDb.getTOKEN(TOKEN);
+    let result = administradorDb.getTOKEN(TOKEN);
     const data = await result.catch((err) => {
       console.log("Controller Error: ", err);
       return null;
     });
     return data;
   }
-
+  
   async actualizarPassword(Password, Confirmación, DNI) {
     if (Password === Confirmación) {
-      var result = administradorDb.updatePassword(DNI, Password);
+      let result = administradorDb.updatePassword(DNI, Password);
       const data = await result.catch((err) => {
         console.log("Controller Error: ", err);
         return null;
@@ -62,7 +62,7 @@ class AdministradorController {
   }
 
   async deleteAdministrador(DNI) {
-    var result = administradorDb.delete(DNI);
+    let result = administradorDb.delete(DNI);
     const data = await result.catch((err) => {
       console.log("Controller Error: ", err);
       return null;
