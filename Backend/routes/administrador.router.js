@@ -1,4 +1,4 @@
-var express = require('express');
+let express = require('express');
 const router = express.Router();
 /**
  * Documentación Completa
@@ -70,7 +70,7 @@ router.get('/buscarIDPorDNI',async(req,res)=>{
 
 
 router.put('/password',async(req,res)=>{
-  const { Password,PasswordNueva, DNI } = req.body;
+  const { PasswordNueva, DNI } = req.body;
   const info = await administradorDb.actualizarPassword(PasswordNueva,PasswordNueva,DNI);
   res.setHeader("Content-Type", "application/json");
   if (info.error) {
@@ -82,9 +82,7 @@ router.put('/password',async(req,res)=>{
   return res.end(JSON.stringify(info));
 })
 
-
 router.delete('/eliminar',async(req,res)=>{
-  const DNI = req.query;
   const info = await administradorDb.deleteAdministrador(req.query.DNI);
   res.setHeader("Content-Type", "application/json");
   if (info == null) {
