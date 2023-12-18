@@ -13,14 +13,19 @@ function roundJS(number) {
 
 class PagosController {
 
-    async getPagosCliente(idContrato) {
+  async getPagosCliente(idContrato) {
+    try {
         let result = PagosDb.verPagosCliente(idContrato);
         const data = await result.catch((err) => {
             console.log("Controller Error: ", err);
             return null;
         });
         return data[0][0];
+    } catch (error) {
+        console.log(error);
+        return null;
     }
+}
 
     async armarFechaFinal(mes, anho) {
         if (esBisiesto(anho) && mes === 2) {
