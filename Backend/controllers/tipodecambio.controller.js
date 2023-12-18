@@ -4,10 +4,9 @@ const TiposDeCambioModel = require('../models/tipodecambio.model');
 const tipoDeCambioDb = new TiposDeCambioModel();
 
 class TipoDeCambioController{
-    constructor(){}
 
     async get(){
-        var result = tipoDeCambioDb.getNow();
+        let result = tipoDeCambioDb.getNow();
         const data = await result.catch((err) =>{
             console.log('Controller error',err);
             return null;
@@ -16,7 +15,7 @@ class TipoDeCambioController{
     }
 
     async prueba(DOLAR){
-        var result = tipoDeCambioDb.updateCambioDolar(DOLAR);
+        let result = tipoDeCambioDb.updateCambioDolar(DOLAR);
         const data = await result.catch((err) =>{
             console.log('Controller error',err);
             return null;
@@ -26,7 +25,7 @@ class TipoDeCambioController{
 
     async updateTipoDeCambio(DOLAR){
         if(DOLAR>=0){
-        var result = tipoDeCambioDb.updateCambioDolar(DOLAR);
+        let result = tipoDeCambioDb.updateCambioDolar(DOLAR);
         const data = await result.catch((err) =>{
             console.log('Controller error',err);
             return null;
