@@ -2,11 +2,10 @@ const express = require('express');
 const PagosModel = require('../models/pagos.model');
 const PagosDb = new PagosModel();
 const esBisiesto = (year) => {
-  return (year % 400 === 0) ? true : 
-  			(year % 100 === 0) ? false : 
-  				year % 4 === 0;
+    return (year % 400 === 0) ? true :
+        (year % 100 === 0) ? false :
+            year % 4 === 0;
 };
-
 
 
 function roundJS(number) {
@@ -26,25 +25,24 @@ class PagosController{
 
     }
 
-    async armarFechaFinal(mes,anho){
-      if(esBisiesto(anho) && mes ==2 ){
-        let fechaFin = anho+"-"+mes+"-"+29;
+    async armarFechaFinal(mes, anho) {
+      if (esBisiesto(anho) && mes === 2) {
+        let fechaFin = `${anho}-${mes}-29`;
         return fechaFin;
       }
-
-      if(mes<13){
-        console.log(mes)
-      if(mes === 1 || mes ===3 || mes ===5 || mes ===7 || mes ===8 || mes === 10 || mes === 12){
-        let fechaFin = anho+"-"+mes+"-"+31;
-        console.log(fechaFin)
-        return fechaFin;
-      }else{
-        let fechaFin = anho+"-"+mes+"-"+30;
-        console.log(fechaFin)
-        return fechaFin;
+  
+      if (mes < 13) {
+        console.log(mes);
+        if ([1, 3, 5, 7, 8, 10, 12].includes(mes)) {
+          let fechaFin = `${anho}-${mes}-31`;
+          console.log(fechaFin);
+          return fechaFin;
+        } else {
+          let fechaFin = `${anho}-${mes}-30`;
+          console.log(fechaFin);
+          return fechaFin;
+        }
       }
-      }
-      
     }
 
 
@@ -129,35 +127,33 @@ class PagosController{
       return data;
     }
 
-    async createObjects(idLote,coutasIniciales,coutasFinanciadas){
-      
+    async createObjects(idLote, coutasIniciales, coutasFinanciadas) {
       try {
-        for (let index = 0; index < coutasIniciales.length; index++) {
-          console.log("Coutas iniciales: ",index,"\n Datos:",coutasIniciales[index],)
-          let monto = coutasIniciales[index].monto;
-          let fecha = coutasIniciales[index].fecha;
-          let saldo = coutasIniciales[index].saldo;
-          let result = await PagosDb.createPagoInicial(idLote,monto,fecha,saldo);  
-                 
+        for (const coutaInicial of coutasIniciales) {
+          console.log("Coutas iniciales: ", "\n Datos:", coutaInicial);
+          let monto = coutaInicial.monto;
+          let fecha = coutaInicial.fecha;
+          let saldo = coutaInicial.saldo;
+          let result = await PagosDb.createPagoInicial(idLote, monto, fecha, saldo);
         }
-
-        for (let index = 0; index < coutasFinanciadas.length; index++) {
-          let monto = coutasFinanciadas[index].monto;
-          let fecha = coutasFinanciadas[index].fecha;
-          let saldo = coutasFinanciadas[index].saldo;
-          let result = await PagosDb.createPagoFinanciamiento(idLote,monto,fecha,saldo);          
+  
+        for (const coutaFinanciada of coutasFinanciadas) {
+          let monto = coutaFinanciada.monto;
+          let fecha = coutaFinanciada.fecha;
+          let saldo = coutaFinanciada.saldo;
+          let result = await PagosDb.createPagoFinanciamiento(idLote, monto, fecha, saldo);
         }
-          
+  
         const data = await result.catch((err) => {
           console.log("Controller Error: ", err);
           return null;
-        })
+        });
+  
         return data;
-
       } catch (error) {
-        return new Error('Problema en el controlador de pagos, atte. TI')
+        return new Error('Problema en el controlador de pagos, atte. TI');
       }
- }
+    }
 
 }
 
