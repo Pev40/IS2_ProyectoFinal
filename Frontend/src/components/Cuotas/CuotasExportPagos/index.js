@@ -32,15 +32,7 @@ function CuotasExportPagos({ contracts = [] }) {
       <div>
         <table id="ContratosExportXLSX" style={{ display: "none" }}>
           <tbody>
-            {/* <tr>
-              <td>Recaudado</td>
-              <td>188529l.2</td>
-            </tr>
-            <tr>
-              <td>Pendiente total por cobrar</td>
-              <td>48529l.2</td>
-            </tr> */}
-            <tr>
+            <tr key="header">
               <th></th>
               <th></th>
               <th></th>
@@ -49,7 +41,7 @@ function CuotasExportPagos({ contracts = [] }) {
               <th></th>
               <th></th>
             </tr>
-            <tr>
+            <tr key="columnNames">
               <th>#</th>
               <th>Codigo</th>
               <th>Cliente</th>
@@ -63,7 +55,7 @@ function CuotasExportPagos({ contracts = [] }) {
             </tr>
             {contracts.length
               ? contracts.map((contract, index) => (
-                  <tr>
+                  <tr key={index + 1}>
                     <td>{index + 1}</td>
                     <td>{contract.id}</td>
                     <td>{contract[contratosFields.cliente]}</td>
@@ -83,4 +75,6 @@ function CuotasExportPagos({ contracts = [] }) {
     </>
   );
 }
+
 export default CuotasExportPagos;
+
