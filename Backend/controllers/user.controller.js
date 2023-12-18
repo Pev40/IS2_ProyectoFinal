@@ -14,6 +14,19 @@ const clienteDb = ClientesModel();
 const tipoDeCambiodb = TiposDeCambioModel();
 const localidadDb = LocalidadModel();
 
+const clienteData = {
+    Nombre: "John Doe",
+    Direccion: "123 Main St",
+    Localidad: "Some City",
+    DNI: "12345678",
+    Telefono: "555-1234",
+    Correo: "john@example.com",
+    NombreCoo: "Jane Doe",
+    TelefonoCoo: "555-5678"
+};
+
+await updateCliente(clienteData);
+
 class UserController {
     /**
      * Controladores Locaciones
@@ -60,9 +73,9 @@ class UserController {
         }
     }
 
-    async updateCliente(Nombre, Direccion, Localidad, DNI, Telefono, Correo, NombreCoo, TelefonoCoo) {
+    async updateCliente(clienteData) {
         try {
-            const resultUpdateCliente = await clienteDb.updateCliente(Nombre, Correo, Direccion, Localidad, DNI, Telefono, NombreCoo, TelefonoCoo);
+            const resultUpdateCliente = await clienteDb.updateCliente(clienteData);
             const dataUpdateCliente = resultUpdateCliente;
             return dataUpdateCliente;
         } catch (err) {
