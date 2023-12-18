@@ -66,7 +66,6 @@ function Proyecciones() {
     if (mesesDesde && mesesHasta && añosDesde && añosHasta) {
       projectionInterval();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mesesDesde, mesesHasta, añosDesde, añosHasta]);
 
   useEffect(() => {
