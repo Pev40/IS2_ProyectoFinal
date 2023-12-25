@@ -26,8 +26,11 @@ const estadoLote = [
   { id: 4, label: "Bloqueado" },
 ];
 
+
+
 function Mantenimiento() {
   const [data, setData] = useState([]);
+  const [filterData, setFilterData] = useState([]);
   const [modalInsertar, setModalInsertar] = useState(false);
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
