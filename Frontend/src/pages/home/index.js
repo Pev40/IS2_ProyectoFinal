@@ -2,8 +2,7 @@ import { Container, Typography } from "@mui/material";
 
 const Home = () => {
   return (
-    <>
-      <Container maxWidth="xl" sx={{ paddingTop: "2em" }}>
+          <Container maxWidth="xl" sx={{ paddingTop: "2em" }}>
         <Typography
           variant="h2"
           align="center"
@@ -14,7 +13,6 @@ const Home = () => {
           Bienvenidos al Gestor de Pagos - Mykonos
         </Typography>
       </Container>
-    </>
   );
 };
 
