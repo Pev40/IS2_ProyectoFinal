@@ -10,7 +10,7 @@ const pagosRouter = require('./pagos.router');
 const loginRouter = require('./login.router');
 function routerApi(app){
     const router = express.Router();
-    app.use('/api_gestordepagos_mikonos',router);
+    app.use('/api_gestordepagos',router);
     router.use('/administrador',administradorRouter);
     router.use('/localidades',localidadesRouter);
     router.use('/clientes',clientesRouter);
