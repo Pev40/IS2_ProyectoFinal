@@ -67,7 +67,7 @@ class PagosModel{
     async calcularProyecciónIntervaloSolesIntervalo(FechaInicio,FechaFin){
         console.log(FechaInicio,FechaFin);
         const con =  dbconnections.promise();
-        const data = await con.query('CALL CalcularProyeccionSoles(?,?)',[FechaInicio,FechaFin]);
+        const data = await con.query('CALL CalcularProyeccionIntervaloSoles(?,?)',[FechaInicio,FechaFin]);
         console.log("Error Soles: ",data[0][0][0]);
         return data[0][0][0];
     }
@@ -75,7 +75,7 @@ class PagosModel{
     async calcularProyecciónIntervaloDolaresIntervalo(FechaInicio,FechaFin){
         console.log(FechaInicio,FechaFin);
         const con =  dbconnections.promise();
-        const data = await con.query('CALL CalcularProyeccionDolares(?,?)',[FechaInicio,FechaFin]);
+        const data = await con.query('CALL CalcularProyeccionIntervaloDolares(?,?)',[FechaInicio,FechaFin]);
         console.log("Error Dolares: ",data[0][0][0]);
         return data[0][0][0];
     }
