@@ -186,7 +186,9 @@ function Mantenimiento() {
         </ModalHeader>
         <ModalBody>
           <FormGroup>
+            <label htmlFor="idInput">ID:</label>
             <input
+              id="idInput"
               className="form-control"
               readOnly
               type="hidden"
@@ -194,8 +196,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
-            <label>Lote:</label>
+            <label htmlFor="loteInput">Lote:</label>
             <input
+              id="loteInput"
               className="form-control"
               name="Lote"
               type="text"
@@ -204,8 +207,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
-            <label>Manzana:</label>
+            <label htmlFor="manzanaInput">Manzana:</label>
             <input
+              id="manzanaInput"
               className="form-control"
               name="Manzana"
               type="text"
@@ -214,8 +218,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
-            <label>Numero:</label>
+            <label htmlFor="numeroInput">Numero:</label>
             <input
+              id="numeroInput"
               className="form-control"
               name="Numero"
               type="text"
@@ -224,8 +229,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
-            <label>Area:</label>
+            <label htmlFor="areaInput">Area:</label>
             <input
+              id="areaInput"
               className="form-control"
               name="Area"
               type="text"
@@ -234,8 +240,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
-            <label>Precio:</label>
+            <label htmlFor="precioInput">Precio:</label>
             <input
+              id="precioInput"
               className="form-control"
               name="Precio"
               type="text"
@@ -244,8 +251,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
-            <label>Estado:</label>
+            <label htmlFor="estadoInput">Estado:</label>
             <select
+              id="estadoInput"
               className="form-control"
               name="Estado"
               type="text"
@@ -279,7 +287,9 @@ function Mantenimiento() {
         </ModalHeader>
         <ModalBody>
           <FormGroup>
+            <label htmlFor="idEditarInput">ID:</label>
             <input
+              id="idEditarInput"
               className="form-control"
               readOnly
               type="hidden"
@@ -287,7 +297,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
+            <label htmlFor="loteEditarInput">Lote:</label>
             <input
+              id="loteEditarInput"
               className="form-control"
               name="Lote"
               type="hidden"
@@ -295,7 +307,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
+            <label htmlFor="manzanaEditarInput">Manzana:</label>
             <input
+              id="manzanaEditarInput"
               className="form-control"
               name="Manzana"
               type="hidden"
@@ -304,7 +318,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
+            <label htmlFor="numeroEditarInput">Numero:</label>
             <input
+              id="numeroEditarInput"
               className="form-control"
               name="Numero"
               type="hidden"
@@ -313,7 +329,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
+            <label htmlFor="areaEditarInput">Area:</label>
             <input
+              id="areaEditarInput"
               className="form-control"
               name="Area"
               type="hidden"
@@ -322,8 +340,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
-            <label>Precio:</label>
+            <label htmlFor="precioEditarInput">Precio:</label>
             <input
+              id="precioEditarInput"
               className="form-control"
               name="Precio"
               type="text"
@@ -332,8 +351,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
-            <label>Estado:</label>
+            <label htmlFor="estadoEditarInput">Estado:</label>
             <select
+              id="estadoEditarInput"
               className="form-control"
               name="idEstadoLote"
               type="text"
