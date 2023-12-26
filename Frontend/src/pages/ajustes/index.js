@@ -1,8 +1,7 @@
 import "./styles.css";
 import { Button } from "reactstrap";
 import apiMykonos from "services/apiMykonos";
-import { useEffect } from "react";
-import React, { useState } from "react";
+import { useEffect, React, useState } from "react";
 import { useSnackbar } from "contexts/SnackbarContext";
 import { Container, Typography } from "@mui/material";
 
