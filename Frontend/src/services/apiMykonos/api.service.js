@@ -1,5 +1,5 @@
 import axios from "axios";
-const API = "http://localhost:3015/api_gestordepagos_mikonos/";
+const API = "http://localhost:3015/api_gestordepagos/";
 
 async function send({ method, url, data }) {
   try {
