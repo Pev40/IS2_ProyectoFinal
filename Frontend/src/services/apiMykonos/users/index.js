@@ -9,7 +9,7 @@ export const getUsers = async () => {
     res.forEach((user, i) => (user.id = i));
     return res;
   } catch (error) {
-    logError("error", error);
+    console.error("error", error);
     throw error;
   }
 };
@@ -23,7 +23,7 @@ export const getUser = async ({ dni }) => {
     res.id = res.idAdministrador;
     return res;
   } catch (error) {
-    logError("error", error);
+    console.error("error", error);
     throw error;
   }
 };
@@ -37,7 +37,7 @@ export const createUser = async ({ data }) => {
     if (res?.status === "ERROR") throw res;
     return res;
   } catch (error) {
-    logError("error", error);
+    console.error("error", error);
     throw error;
   }
 };
@@ -52,7 +52,7 @@ export const updateUser = async ({ data }) => {
     if (res?.status === "ERROR") throw res;
     return res;
   } catch (error) {
-    logError("error", error);
+    console.error("error", error);
     throw error;
   }
 };
@@ -66,7 +66,7 @@ export const deleteUser = async ({ dni }) => {
     if (res?.status === "ERROR") throw res;
     return res;
   } catch (error) {
-    logError("error", error);
+    console.error("error", error);
     throw error;
   }
 };
