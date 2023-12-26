@@ -68,3 +68,4 @@ class ClientesModel{
         console.log("Error:",data);
     }
 }
+module.exports = ClientesModel;
