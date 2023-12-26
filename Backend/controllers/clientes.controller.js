@@ -14,7 +14,6 @@ class ClientesController {
 
     
     async getAllSimple(){
-    constructor (){}
 
        try {
            const result = await clientesDb.getAllSinCOO();
