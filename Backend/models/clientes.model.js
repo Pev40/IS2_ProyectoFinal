@@ -3,7 +3,7 @@ const router = express.Router();
 const connectionDb = require("../config/dbconnections");
 
 class ClientesModel{
-
+   
     async createConCoopropietario(clienteData) {
 	    const { Nombre, Direccion, Localidad, DNI, Telefono, Correo, NombreCoo, TelefonoCoo } = clienteData;
 	    const con = connectionDb.promise();
@@ -68,3 +68,5 @@ class ClientesModel{
         console.log("Error:",data);
     }
 }
+
+module.exports = ClientesModel;
