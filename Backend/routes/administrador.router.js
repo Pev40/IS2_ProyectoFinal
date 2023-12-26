@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 /**
@@ -81,7 +82,6 @@ router.put('/password',async(req,res)=>{
   }
   return res.end(JSON.stringify(info));
 })
-
 
 router.delete('/eliminar',async(req,res)=>{
   const info = await administradorDb.deleteAdministrador(req.query.DNI);

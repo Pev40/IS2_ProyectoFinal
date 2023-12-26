@@ -26,12 +26,14 @@ const estadoLote = [
   { id: 4, label: "Bloqueado" },
 ];
 
+
+
 function Mantenimiento() {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
-  const [modalInsertar, setModalInsertar] = useState(0);
-  const [modalEditar, setModalEditar] = useState(0);
-  const [modalEliminar, setModalEliminar] = useState(0);
+  const [modalInsertar, setModalInsertar] = useState(false);
+  const [modalEditar, setModalEditar] = useState(false);
+  const [modalEliminar, setModalEliminar] = useState(false);
   const [loteSeleccionado, setLoteSeleccionado] = useState({
     id: "",
     Lote: "",
@@ -44,17 +46,16 @@ function Mantenimiento() {
 
   const { openSnackbar } = useSnackbar();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     const _lotes = await apiMykonos.lots.getLots();
     setData(_lotes);
-    setFilterData(_lotes);
   }, []);
 
   const seleccionarLote = (elemento, caso) => {
     setLoteSeleccionado(elemento);
     caso === "Editar" ? setModalEditar(true) : setModalEliminar(true);
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLoteSeleccionado((prevState) => ({
@@ -62,6 +63,7 @@ function Mantenimiento() {
       [name]: value,
     }));
   };
+
   const editar = async () => {
     try {
       await apiMykonos.lots.updateLot({
@@ -72,52 +74,62 @@ function Mantenimiento() {
         },
       });
 
-      var dataNueva = data;
-      dataNueva.forEach((lote) => {
-        if (lote.id === loteSeleccionado.id) {
-          lote.Lote = loteSeleccionado.Lote;
-          lote.Manzana = loteSeleccionado.Manzana;
-          lote.Numero = loteSeleccionado.Numero;
-          lote.Area = loteSeleccionado.Area;
-          lote.Precio = loteSeleccionado.Precio;
-          lote.Nombre = estadoLote.find(
-            ({ id }) => id === +loteSeleccionado.idEstadoLote
-          )?.label;
-          lote.idEstadoLote = +loteSeleccionado.idEstadoLote;
-        }
-      });
-      setData(dataNueva);
+      setData((prevData) =>
+        prevData.map((lote) =>
+          lote.id === loteSeleccionado.id
+            ? {
+                ...lote,
+                Lote: loteSeleccionado.Lote,
+                Manzana: loteSeleccionado.Manzana,
+                Numero: loteSeleccionado.Numero,
+                Area: loteSeleccionado.Area,
+                Precio: loteSeleccionado.Precio,
+                Nombre: estadoLote.find(
+                  ({ id }) => id === +loteSeleccionado.idEstadoLote
+                )?.label,
+                idEstadoLote: +loteSeleccionado.idEstadoLote,
+              }
+            : lote
+        )
+      );
+
       openSnackbar({
         severity: "success",
-        text: "Se edito correctamente el lote",
+        text: "Se editó correctamente el lote",
       });
+
       setModalEditar(false);
     } catch (error) {
-      openSnackbar({ severity: "error", text: "Error al editar el Lote" });
+      openSnackbar({ severity: "error", text: "Error al editar el lote" });
     }
   };
+
   const eliminar = () => {
-    setData(data.filter((lote) => lote.id !== loteSeleccionado.id));
+    setData((prevData) =>
+      prevData.filter((lote) => lote.id !== loteSeleccionado.id)
+    );
+
     openSnackbar({
       severity: "success",
-      text: "Se elimino correctamente el lote",
+      text: "Se eliminó correctamente el lote",
     });
+
     setModalEliminar(false);
   };
-  const abrirModalInsertar = () => {
-    setLoteSeleccionado(null);
-    setModalInsertar(true);
-  };
+
   const insertar = () => {
-    var valorInsertar = loteSeleccionado;
-    valorInsertar.id = data[data.length - 1].id + 1;
-    var dataNueva = data;
-    dataNueva.push(valorInsertar);
-    setData(dataNueva);
+    const valorInsertar = {
+      ...loteSeleccionado,
+      id: data[data.length - 1]?.id + 1 || 1,
+    };
+
+    setData((prevData) => [...prevData, valorInsertar]);
+
     openSnackbar({
       severity: "success",
-      text: "Se inserto correctamente el lote",
+      text: "Se insertó correctamente el lote",
     });
+
     setModalInsertar(false);
   };
 
@@ -127,42 +139,7 @@ function Mantenimiento() {
         Terrenos
       </Typography>
 
-      {/* <Button
-        id="insertar"
-        color="success"
-        onClick={() => abrirModalInsertar()}
-      >
-        Insertar Nuevo Lote
-      </Button> */}
-      {/* <FormGroup>
-        Buscar:
-        <input
-          className="form-control"
-          onChange={({ target: { value } }) => {
-            console.log(data);
-            console.log(
-              data.filter(
-                (lot) =>
-                  lot.Letra.toString().toLowerCase() == value ||
-                  lot.Numero == value ||
-                  `${lot.Letra.toString().toLowerCase()}-${lot.Numero}` == value
-              )
-            );
-            setFilterData(
-              data.filter(
-                (lot) =>
-                  lot.Letra.toString().toLowerCase() == value ||
-                  lot.Numero == value ||
-                  `${lot.Letra.toString().toLowerCase()}-${lot.Numero}` == value
-              )
-            );
-          }}
-        />
-      </FormGroup> */}
-      <div
-        className="detallesProductos"
-        style={{ height: "100%", width: "100%" }}
-      >
+      <div className="detallesProductos" style={{ height: "100%", width: "100%" }}>
         <table>
           <thead>
             <tr>
@@ -171,17 +148,15 @@ function Mantenimiento() {
               <th scope="col">Numero</th>
               <th scope="col">Area</th>
               <th scope="col">Precio</th>
-              <th scope="col"> Estado</th>
-              <th scope="col"> Acciones</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
             {data.length
               ? data.map((elemento) => (
-                  <tr>
-                    <td>
-                      {elemento.Letra}-{elemento.Numero}
-                    </td>
+                  <tr key={elemento.id}>
+                    <td>{`${elemento.Letra}-${elemento.Numero}`}</td>
                     <td>{elemento.Letra}</td>
                     <td>{elemento.Numero}</td>
                     <td>{elemento.Area}</td>
@@ -194,15 +169,6 @@ function Mantenimiento() {
                       >
                         Editar Lote
                       </Button>
-                      {/* {"   "}
-                  <Button
-                    display="none"
-                    type="hidden"
-                    color="danger"
-                    onClick={() => seleccionarLote(elemento, "Eliminar")}
-                  > 
-                    Eliminar
-                  </Button>*/}
                     </td>
                   </tr>
                 ))
@@ -211,7 +177,7 @@ function Mantenimiento() {
         </table>
       </div>
 
-      {/* // * MODAL INSERTAR */}
+      {/* MODAL INSERTAR */}
       <Modal isOpen={modalInsertar}>
         <ModalHeader>
           <div>
@@ -220,28 +186,30 @@ function Mantenimiento() {
         </ModalHeader>
         <ModalBody>
           <FormGroup>
+            <label htmlFor="idInput">ID:</label>
             <input
+              id="idInput"
               className="form-control"
-              readonly
+              readOnly
               type="hidden"
-              value={loteSeleccionado && loteSeleccionado.id}
-              onChange={handleChange}
-              value={data[data.length - 1]?.id + 1}
+              value={loteSeleccionado?.id || (data[data.length - 1]?.id + 1) || 1}
             />
           </FormGroup>
           <FormGroup>
-            <label>Lote:</label>
+            <label htmlFor="loteInput">Lote:</label>
             <input
+              id="loteInput"
               className="form-control"
               name="Lote"
               type="text"
-              value={loteSeleccionado ? loteSeleccionado.Lote : ""}
+              value={loteSeleccionado?.Lote || ""}
               onChange={handleChange}
             />
           </FormGroup>
           <FormGroup>
-            <label>Manzana:</label>
+            <label htmlFor="manzanaInput">Manzana:</label>
             <input
+              id="manzanaInput"
               className="form-control"
               name="Manzana"
               type="text"
@@ -250,8 +218,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
-            <label>Numero:</label>
+            <label htmlFor="numeroInput">Numero:</label>
             <input
+              id="numeroInput"
               className="form-control"
               name="Numero"
               type="text"
@@ -260,8 +229,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
-            <label>Area:</label>
+            <label htmlFor="areaInput">Area:</label>
             <input
+              id="areaInput"
               className="form-control"
               name="Area"
               type="text"
@@ -270,8 +240,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
-            <label>Precio:</label>
+            <label htmlFor="precioInput">Precio:</label>
             <input
+              id="precioInput"
               className="form-control"
               name="Precio"
               type="text"
@@ -280,8 +251,9 @@ function Mantenimiento() {
             />
           </FormGroup>
           <FormGroup>
-            <label>Estado:</label>
+            <label htmlFor="estadoInput">Estado:</label>
             <select
+              id="estadoInput"
               className="form-control"
               name="Estado"
               type="text"
@@ -296,7 +268,7 @@ function Mantenimiento() {
           </FormGroup>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={() => insertar()}>
+          <Button color="primary" onClick={insertar}>
             Insertar
           </Button>
           <Button color="danger" onClick={() => setModalInsertar(false)}>
@@ -305,77 +277,87 @@ function Mantenimiento() {
         </ModalFooter>
       </Modal>
 
-      {/* // * MODAL EDITAR */}
+      {/* MODAL EDITAR */}
       <Modal isOpen={modalEditar}>
         <ModalHeader>
           <div className="textModal">
             <h3>Editar Lote</h3>
-            <h1>{loteSeleccionado && loteSeleccionado.Lote}</h1>
+            <h1>{loteSeleccionado?.Lote}</h1>
           </div>
         </ModalHeader>
         <ModalBody>
           <FormGroup>
+            <label htmlFor="idEditarInput">ID:</label>
             <input
+              id="idEditarInput"
               className="form-control"
-              readonly
+              readOnly
               type="hidden"
-              value={loteSeleccionado && loteSeleccionado.id}
-              onChange={handleChange}
+              value={loteSeleccionado?.id}
             />
           </FormGroup>
           <FormGroup>
+            <label htmlFor="loteEditarInput">Lote:</label>
             <input
+              id="loteEditarInput"
               className="form-control"
               name="Lote"
               type="hidden"
-              value={loteSeleccionado && loteSeleccionado.Lote}
-              onChange={handleChange}
+              value={loteSeleccionado?.Lote}
             />
           </FormGroup>
           <FormGroup>
+            <label htmlFor="manzanaEditarInput">Manzana:</label>
             <input
+              id="manzanaEditarInput"
               className="form-control"
               name="Manzana"
               type="hidden"
-              value={loteSeleccionado && loteSeleccionado.Manzana}
+              value={loteSeleccionado?.Manzana || ""}
               onChange={handleChange}
             />
           </FormGroup>
           <FormGroup>
+            <label htmlFor="numeroEditarInput">Numero:</label>
             <input
+              id="numeroEditarInput"
               className="form-control"
               name="Numero"
               type="hidden"
-              value={loteSeleccionado && loteSeleccionado.Numero}
+              value={loteSeleccionado?.Numero || ""}
               onChange={handleChange}
             />
           </FormGroup>
           <FormGroup>
+            <label htmlFor="areaEditarInput">Area:</label>
             <input
+              id="areaEditarInput"
               className="form-control"
               name="Area"
               type="hidden"
-              value={loteSeleccionado && loteSeleccionado.Area}
+              value={loteSeleccionado?.Area || ""}
               onChange={handleChange}
             />
           </FormGroup>
           <FormGroup>
-            <label>Precio:</label>
+            <label htmlFor="precioEditarInput">Precio:</label>
             <input
+              id="precioEditarInput"
               className="form-control"
               name="Precio"
               type="text"
-              value={loteSeleccionado && loteSeleccionado.Precio}
+              value={loteSeleccionado?.Precio || ""}
               onChange={handleChange}
             />
           </FormGroup>
           <FormGroup>
-            <label>Estado:</label>
+            <label htmlFor="estadoEditarInput">Estado:</label>
             <select
+              id="estadoEditarInput"
               className="form-control"
               name="idEstadoLote"
               type="text"
-              value={loteSeleccionado && loteSeleccionado.idEstadoLote}
+              value={loteSeleccionado?.idEstadoLote || ""}
               onChange={handleChange}
             >
               {estadoLote.map(({ id, label }) => (
@@ -386,25 +368,23 @@ function Mantenimiento() {
             </select>
           </FormGroup>
         </ModalBody>
-
         <ModalFooter>
           <Button color="danger" onClick={() => setModalEditar(false)}>
             Cancelar
           </Button>
-          <Button color="primary" onClick={() => editar()}>
+          <Button color="primary" onClick={editar}>
             Grabar
           </Button>
         </ModalFooter>
       </Modal>
 
-      {/* // * MODAL ELIMINAR */}
+      {/* MODAL ELIMINAR */}
       <Modal isOpen={modalEliminar}>
         <ModalBody>
-          ¿Estas seguro que deseas eliminar el lote{" "}
-          {loteSeleccionado && loteSeleccionado.Lote} ?
+          ¿Estás seguro que deseas eliminar el lote {loteSeleccionado?.Lote}?
         </ModalBody>
         <ModalFooter>
-          <Button color="danger" onClick={() => eliminar()}>
+          <Button color="danger" onClick={eliminar}>
             Si
           </Button>
           <Button color="secondary" onClick={() => setModalEliminar(false)}>

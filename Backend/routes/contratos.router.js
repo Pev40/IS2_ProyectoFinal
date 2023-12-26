@@ -10,64 +10,80 @@ const ContratosControl = new ContratosController();
 const PagosControl = new PagosController();
 
 router.get('/',async(req,res)=>{
-
-  const info = await ContratosControl.getContratos();
-  console.log("RouterINFO: ",info);
-    res.setHeader("Content-Type", "application/json");
-    if (info.error){
-      res.status(info.error).end(JSON.stringify(info))
-      return
-    }
-    res.end(JSON.stringify(info));
+	try {
+	    const info = await ContratosControl.getContratos();
+	    console.log("RouterINFO: ", info);
+	    res.setHeader("Content-Type", "application/json");
+	    if (info.error) {
+	      res.status(info.error).end(JSON.stringify(info));
+	      return;
+	    }
+	    res.end(JSON.stringify(info));
+	  } catch (error) {
+	    console.error(error);
+	    res.status(500).json({ status: 'error' });
+	  }
 })
 
-router.post('/create',async(req,res)=>{
-  try{
-    info = await ContratosControl.createContrato(Number(req.body.idDivisa),req.body.DNI,Number(req.body.idAdmin),Number( req.body.idLote),Number( req.body.MontoFinal),req.body.FechaInicial);
-    info2 = await PagosControl.createObjects(Number(req.body.idLote),req.body.cuotasInicial,req.body.cuotasFinanciar);  
+router.post('/create', async (req, res) => {
+  try {
+    const info = await ContratosControl.createContrato(
+      Number(req.body.idDivisa),
+      req.body.DNI,
+      Number(req.body.idAdmin),
+      Number(req.body.idLote),
+      Number(req.body.MontoFinal),
+      req.body.FechaInicial
+    );
+    const info2 = await PagosControl.createObjects(
+      Number(req.body.idLote),
+      req.body.cuotasInicial,
+      req.body.cuotasFinanciar
+    );
     res.setHeader("Content-Type", "application/json");
-    if (info.error) {
+    if (info.error || info2.error) {
       res.status(info.error || info2.error).end(JSON.stringify(info)).json({
         status: "ERROR",
       });
       return;
     }
     res.status(200).json({ status: "ok" });
-  
   } catch (error) {
-    return res.status(500).json({status: 'error'});
+    console.error(error);
+    res.status(500).json({ status: 'error' });
   }
-  
-  })
+});
 
-router.get('/especifico',async(req,res)=>{
-
-  const info = await ContratosControl.getContratosID(req.body.idContrato);
+router.get('/especifico', async (req, res) => {
+  try {
+    const info = await ContratosControl.getContratosID(req.body.idContrato);
     res.setHeader("Content-Type", "application/json");
-    if (info.error){
-      res.status(info.error).end(JSON.stringify(info))
-      return
+    if (info.error) {
+      res.status(info.error).end(JSON.stringify(info));
+      return;
     }
     res.end(JSON.stringify(info));
-})
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error' });
+  }
+});
 
 
-router.delete('/delete',async(req,res)=>{
-
-  const info = await ContratosControl.delete(Number(req.body.idContrato));
+router.delete('/delete', async (req, res) => {
+  try {
+    const info = await ContratosControl.delete(Number(req.body.idContrato));
     res.setHeader("Content-Type", "application/json");
-    if (info.error){
-      res.status(info.error).end(JSON.stringify(info))
-      return
+    if (info.error) {
+      res.status(info.error).end(JSON.stringify(info));
+      return;
     }
     res.end(JSON.stringify(info));
-})
-
-
-
-
-
-
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error' });
+  }
+});
 
 
 module.exports = router;

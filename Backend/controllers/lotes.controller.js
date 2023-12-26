@@ -13,9 +13,8 @@ const lotesPagosDb = new LotesPagosModel();
 
 class LotesController{
 
-    constructor(){}
     async getAllAnidada(){
-        var result = lotesPagosDb.getAllContraido();
+        let result = lotesPagosDb.getAllContraido();
         const data = await result.catch((err)=>{
             console.log('controller Error: ',err);
             return null;
@@ -24,7 +23,7 @@ class LotesController{
     }
 
     async getAllExtendido(){
-        var result = lotesPagosDb.getAll();
+        let result = lotesPagosDb.getAll();
         const data = await result.catch((err)=>{
             console.log('controller Error: ',err);
             return null;
@@ -34,7 +33,7 @@ class LotesController{
 
 
     async getAllExtendidoVisualizadorMikonos(){
-        var result = lotesPagosDb.getAllContraidoMikonos();
+        let result = lotesPagosDb.getAllContraidoMikonos();
         const data = await result.catch((err)=>{
             console.log('controller Error: ',err);
             return null;
@@ -44,7 +43,7 @@ class LotesController{
 
 
     async actualizarPrecioYEstado(idLote,idEstado,Precio){
-        var result = lotesPagosDb.updateEstadoYPrecio(idLote,idEstado,Precio);
+        let result = lotesPagosDb.updateEstadoYPrecio(idLote,idEstado,Precio);
         const data = await result.catch((err)=>{
             console.log('controller Error: ',err);
             return null;
@@ -54,7 +53,7 @@ class LotesController{
     }
 
     async actualizarEstado(idLote,idEstado){
-        var result = lotesPagosDb.updateEstado(idLote,idEstado);
+        let result = lotesPagosDb.updateEstado(idLote,idEstado);
         const data = await result.catch((err)=>{
             console.log('controller Error: ',err);
             return null;
@@ -63,7 +62,7 @@ class LotesController{
     }
 
     async searchIdLote(idLote){
-        var result = lotesPagosDb.searchPorID(idLote);
+        let result = lotesPagosDb.searchPorID(idLote);
         const data = await result.catch((err)=>{
             console.log('controller Error: ',err);
             return null;
@@ -73,7 +72,7 @@ class LotesController{
     }
 
     async searchLetraYNumero(Letra,Numero){
-        var result = lotesPagosDb.searchPorLetraYNumero(Letra,Numero);
+        let result = lotesPagosDb.searchPorLetraYNumero(Letra,Numero);
         const data = await result.catch((err)=>{
             console.log('controller Error: ',err);
             return null;

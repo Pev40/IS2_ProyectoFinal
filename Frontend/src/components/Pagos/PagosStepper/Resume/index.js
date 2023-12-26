@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import {
   Box,
   Paper,
@@ -14,6 +16,18 @@ import { cuotasFields, pagosFields } from "models/Pagos.model";
 import { roundJS } from "utils/cuotas";
 
 const Resume = ({ pagos, clients, lots, projects, divisas }) => {
+  const getClientLabel = (clientId) =>
+    clients.find(({ id }) => clientId === id)?.label || "";
+
+  const getProjectLabel = (projectId) =>
+    projects.find(({ id }) => projectId === id)?.label || projects[0]?.label || "";
+
+  const getLotLabel = (lotId) =>
+    lots.find(({ id }) => lotId === id)?.label || "";
+
+  const getCurrencyLabel = (currencyId) =>
+    divisas.find(({ id }) => currencyId === id)?.label || "";
+
   return (
     <>
       <Typography variant="h6" sx={{ mt: 2, mb: 1 }}>
@@ -22,22 +36,19 @@ const Resume = ({ pagos, clients, lots, projects, divisas }) => {
       <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
         <Typography variant="body1">
           <b>Cliente: </b>
-          {clients.find(({ id }) => pagos[pagosFields.cliente] === id)?.label ||
-            ""}
+          {getClientLabel(pagos[pagosFields.cliente])}
         </Typography>
         <Typography variant="body1">
           <b>Proyecto: </b>
-          {projects.find(({ id }) => pagos[pagosFields.proyecto] === id)
-            ?.label || projects[0].label}
+          {getProjectLabel(pagos[pagosFields.proyecto])}
         </Typography>
         <Typography variant="body1">
           <b>Lote: </b>
-          {lots.find(({ id }) => pagos[pagosFields.lote] === id)?.label || ""}
+          {getLotLabel(pagos[pagosFields.lote])}
         </Typography>
         <Typography variant="body1">
           <b>Moneda: </b>
-          {divisas.find(({ id }) => pagos[pagosFields.moneda] === id)?.label ||
-            ""}
+          {getCurrencyLabel(pagos[pagosFields.moneda])}
         </Typography>
         <Typography variant="body1">
           <b>Precio: </b>
@@ -57,34 +68,29 @@ const Resume = ({ pagos, clients, lots, projects, divisas }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {pagos[pagosFields.cuotasInicial] &&
-                pagos[pagosFields.cuotasInicial].map((cuota) => (
-                  <TableRow key={cuota[cuotasFields.numero]}>
-                    <TableCell>{cuota[cuotasFields.numero] || ""}</TableCell>
-                    <TableCell>
-                      {cuota[cuotasFields.fecha]
-                        ? format(cuota[cuotasFields.fecha], "dd/MM/yyyy")
-                        : ""}
-                    </TableCell>
-                    <TableCell>{cuota[cuotasFields.monto] || ""}</TableCell>
-                    <TableCell>
-                      {cuota[cuotasFields.saldo].toString() || ""}
-                    </TableCell>
-                  </TableRow>
-                ))}
+              {pagos[pagosFields.cuotasInicial]?.map((cuota) => (
+                <TableRow key={cuota[cuotasFields.numero]}>
+                  <TableCell>{cuota[cuotasFields.numero] || ""}</TableCell>
+                  <TableCell>
+                    {cuota[cuotasFields.fecha]
+                      ? format(cuota[cuotasFields.fecha], "dd/MM/yyyy")
+                      : ""}
+                  </TableCell>
+                  <TableCell>{cuota[cuotasFields.monto] || ""}</TableCell>
+                  <TableCell>
+                    {cuota[cuotasFields.saldo]?.toString() || ""}
+                  </TableCell>
+                </TableRow>
+              ))}
               <TableRow>
                 <TableCell colSpan={2} align="right">
                   Total
                 </TableCell>
                 <TableCell>
-                  {pagos[pagosFields.cuotasInicial] &&
-                    (function () {
-                      let montoTotal = 0;
-                      pagos[pagosFields.cuotasInicial].forEach(({ monto }) => {
-                        montoTotal += parseFloat(monto);
-                      });
-                      return <>{roundJS(montoTotal)}</>;
-                    })()}
+                  {pagos[pagosFields.cuotasInicial]?.reduce(
+                    (total, { monto }) => total + parseFloat(monto),
+                    0
+                  )}
                 </TableCell>
                 <TableCell></TableCell>
               </TableRow>
@@ -105,21 +111,20 @@ const Resume = ({ pagos, clients, lots, projects, divisas }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {pagos[pagosFields.cuotasFinanciar] &&
-                pagos[pagosFields.cuotasFinanciar].map((cuota) => (
-                  <TableRow key={cuota[cuotasFields.numero]}>
-                    <TableCell>{cuota[cuotasFields.numero] || ""}</TableCell>
-                    <TableCell>
-                      {cuota[cuotasFields.fecha]
-                        ? format(cuota[cuotasFields.fecha], "dd/MM/yyyy")
-                        : ""}
-                    </TableCell>
-                    <TableCell>{cuota[cuotasFields.monto] || ""}</TableCell>
-                    <TableCell>
-                      {cuota[cuotasFields.saldo].toString() || ""}
-                    </TableCell>
-                  </TableRow>
-                ))}
+              {pagos[pagosFields.cuotasFinanciar]?.map((cuota) => (
+                <TableRow key={cuota[cuotasFields.numero]}>
+                  <TableCell>{cuota[cuotasFields.numero] || ""}</TableCell>
+                  <TableCell>
+                    {cuota[cuotasFields.fecha]
+                      ? format(cuota[cuotasFields.fecha], "dd/MM/yyyy")
+                      : ""}
+                  </TableCell>
+                  <TableCell>{cuota[cuotasFields.monto] || ""}</TableCell>
+                  <TableCell>
+                    {cuota[cuotasFields.saldo]?.toString() || ""}
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
@@ -128,4 +133,16 @@ const Resume = ({ pagos, clients, lots, projects, divisas }) => {
   );
 };
 
+Resume.propTypes = {
+  pagos: PropTypes.object.isRequired,
+  clients: PropTypes.array.isRequired,
+  lots: PropTypes.array.isRequired,
+  projects: PropTypes.array.isRequired,
+  divisas: PropTypes.array.isRequired,
+};
+
 export default Resume;
+
+
+
+

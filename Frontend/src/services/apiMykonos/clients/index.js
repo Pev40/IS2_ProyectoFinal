@@ -1,5 +1,9 @@
 import { del, get, post, put } from "../api.service";
 
+const logError = (funcName, error) => {
+  console.error(`Error in ${funcName}:`, error);
+};
+
 export const getClients = async (data = false) => {
   try {
     const res = await get({
@@ -20,6 +24,7 @@ export const getClients = async (data = false) => {
     res.forEach((client, i) => (client.id = i));
     return res;
   } catch (error) {
+    logError("getClients", error);
     throw error;
   }
 };
@@ -33,6 +38,7 @@ export const getClient = async ({ dni }) => {
     res.forEach((client, i) => (client.id = i));
     return res[0];
   } catch (error) {
+    logError("getClient", error);
     throw error;
   }
 };
@@ -47,6 +53,7 @@ export const createClient = async ({ data }) => {
     if (res?.status === "ERROR") throw res;
     return res;
   } catch (error) {
+    logError("createClient", error);
     throw error;
   }
 };
@@ -61,6 +68,7 @@ export const updateClient = async ({ data }) => {
     if (res?.status === "ERROR") throw res;
     return res;
   } catch (error) {
+    logError("updateClient", error);
     throw error;
   }
 };
@@ -74,6 +82,7 @@ export const deleteClient = async ({ dni }) => {
     if (res?.status === "ERROR") throw res;
     return res;
   } catch (error) {
+    logError("deleteClient", error);
     throw error;
   }
 };
@@ -94,6 +103,7 @@ export const getLocalities = async () => {
     );
     return customRes;
   } catch (error) {
+    logError("getLocalities", error);
     throw error;
   }
 };
