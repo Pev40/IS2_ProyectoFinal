@@ -8,7 +8,7 @@ export const getDolar = async () => {
     if (res?.status === "ERROR") throw res;
     return res.TipoDeCambio;
   } catch (error) {
-    logError("error", error);
+    console.error("error", error);
     throw error;
   }
 };
@@ -22,7 +22,7 @@ export const updateTipoCambio = async ({ cambio }) => {
     if (res?.status === "ERROR") throw res;
     return res;
   } catch (error) {
-    logError("error", error);
+    console.error("error", error);
     throw error;
   }
 };
