@@ -11,7 +11,10 @@ const ClientesModel = require("../models/clientes.model");
 const clientesDb = new ClientesModel();
 
 class ClientesController {
-   async getAllSimple(){
+
+    
+    async getAllSimple(){
+
        try {
            const result = await clientesDb.getAllSinCOO();
            return result;
@@ -20,6 +23,7 @@ class ClientesController {
            return null;
        }
    }
+
 
    async getAllConCOO(){
        try {
@@ -58,6 +62,7 @@ class ClientesController {
            return null;
        }
    }
+
 
    async actualizarCliente(params) {
        console.log(params.Nombres, params.Email, params.Direccion, params.Localidad, params.DNI, params.Telefono, params.NombreCoo, params.TelefonoCoo);
