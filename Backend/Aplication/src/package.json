@@ -1,0 +1,53 @@
+{
+  "name": "apimykonos",
+  "version": "2.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "jest  --silent --coverage "
+  },
+  "author": "Piero Vizcarra Vargas",
+  "license": "ISC",
+  "dependencies": {
+    "babel-jest": "^29.7.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "~1.4.4",
+    "cookies": "^0.8.0",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^12.0.4",
+    "esprima": "^4.0.1",
+    "express": "^4.17.2",
+    "http-errors": "~1.6.3",
+    "jade": "^0.31.2",
+    "jest": "^29.7.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "supertest": "^6.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!(lodash-es|other-es-module))"
+    ]
+  }
+}
