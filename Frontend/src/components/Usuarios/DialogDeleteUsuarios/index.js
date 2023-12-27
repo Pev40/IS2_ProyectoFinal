@@ -65,7 +65,7 @@ const DialogDeleteUsuarios = ({ user }) => {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleCloseDialog}>Cancelar</Button>
-            <Button onClick={handleDelete} variant="contained" color="error">
+            <Button onClick={handleDelete} variant="contained" color="error" name="eliminar">
               Eliminar
             </Button>
           </DialogActions>
