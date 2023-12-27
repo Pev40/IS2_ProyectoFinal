@@ -107,8 +107,8 @@ function Proyecciones() {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Intervalo de meses" value="1" />
-              <Tab label="Mes específico" value="2" />
+              <Tab label="Intervalo de meses" value="1" name=""/>
+              <Tab label="Mes específico" value="2" name="mes-especifico"/>
             </TabList>
           </Box>
 
@@ -121,7 +121,7 @@ function Proyecciones() {
 
               <Select
                 labelId="demo-simple-select-autowidth-label"
-                id="demo-simple-select"
+                name="demo-simple-select"
                 value={añosDesde}
                 label="Años"
                 onChange={handleChangeAñosDesde}
@@ -160,7 +160,7 @@ function Proyecciones() {
 
               <Select
                 labelId="demo-simple-select-autowidth-label"
-                id="demo-simple-select"
+                id="demo-simple-select-2"
                 value={añosHasta}
                 label="Años"
                 onChange={handleChangeAñosHasta}
@@ -173,13 +173,14 @@ function Proyecciones() {
               </Select>
             </FormControl>
             <FormControl sx={{ m: 1, minWidth: 80 }}>
-              <InputLabel id="demo-simple-select-autowidth-label">
+              <InputLabel id="demo-simple-select-autowidth-label" >
                 Mes
               </InputLabel>
 
               <Select
                 labelId="demo-simple-select-autowidth-label"
-                id="demo-simple-select"
+                id="demo-simple-select-3"
+                
                 value={mesesHasta}
                 label="Meses"
                 onChange={handleChangeMesesHasta}
@@ -215,7 +216,7 @@ function Proyecciones() {
                   {" - "}
                   {mesesHasta}
                 </td>
-                <td>{totalSolesIntervalo}</td>
+                <td id="total-soles">{totalSolesIntervalo}</td>
               </tbody>
               <thead>
                 <tr style={{ textAlign: "center" }}>
@@ -240,7 +241,7 @@ function Proyecciones() {
                   {" - "}
                   {mesesHasta}
                 </td>
-                <td>{totalDolaresIntervalo}</td>
+                <td id="total-dolares">{totalDolaresIntervalo}</td>
               </tbody>
             </table>
           </TabPanel>
@@ -253,7 +254,7 @@ function Proyecciones() {
 
               <Select
                 labelId="demo-simple-select-autowidth-label"
-                id="demo-simple-select"
+                id="demo-simple-select-anio-especifico"
                 value={añoEspecifico}
                 label="Años"
                 onChange={handleChangeAñoEspecifico}
@@ -272,7 +273,7 @@ function Proyecciones() {
 
               <Select
                 labelId="demo-simple-select-autowidth-label"
-                id="demo-simple-select"
+                id="demo-simple-select-mes-especifico"
                 value={mesEspecifico}
                 label="Meses"
                 onChange={handleChangeMesEspecifico}
@@ -297,7 +298,7 @@ function Proyecciones() {
                 <td>
                   {añoEspecifico} {" - "} {mesEspecifico}
                 </td>
-                <td>{totalSolesEspecifico}</td>
+                <td id="total-soles-especifico">{totalSolesEspecifico}</td>
               </tbody>
               <thead>
                 <tr>
@@ -311,7 +312,7 @@ function Proyecciones() {
                 <td>
                   {añoEspecifico} {" - "} {mesEspecifico}
                 </td>
-                <td>{totalDolaresEspecifico}</td>
+                <td id="total-dolares-especifico">{totalDolaresEspecifico}</td>
               </tbody>
             </table>
           </TabPanel>
