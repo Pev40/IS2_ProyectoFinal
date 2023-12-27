@@ -15,8 +15,6 @@ Se ha formado un equipo conformado por 6 integrantes, quienes trabajarán en con
 ## Selección del Proyecto de Software
 
 El equipo ha seleccionado un proyecto de software web relativamente complejo y poco estructurado. Se ha optado por un proyecto disponible en GitHub, preferiblemente uno desarrollado durante el curso de Ingeniería de Software I. En caso de cambio de proyecto, se han considerado opciones de proyectos Open Source, utilizando listas de proyectos web populares disponibles en los siguientes enlaces:
-- [Proyectos Web Populares](https://github.com/unicodeveloper/awesome-opensource-apps)
-- [Proyectos Web Java](https://github.com/topics/java-web-app)
 
 ## Repositorio de Software
 
@@ -34,10 +32,6 @@ Se implementa un pipeline de CI/CD en Jenkins con las siguientes etapas y pasos:
 ## Análisis Estático de Código Fuente:
    - Se incorpora la herramienta SonarQube para realizar análisis estático del código fuente y mejorar la calidad del mismo. En el cual se encontro 253 errores en `Frontend`, 107 en `Backend` y 10 errores en Seguridad
 
-     ![image](https://github.com/andrealopezco20/ADA/assets/104209000/cb44f531-8043-46e8-bcf7-5976a179080b)
-     *Imagen original de los errores anterioes*
-![image](https://github.com/andrealopezco20/ADA/assets/104209000/c8ebd4ea-f8bf-4753-9f7e-1e89f7392c34)
-*Imagen actual despues de la modificacion de los errores*
 
 
 ## Pruebas Unitarias:
@@ -157,3 +151,7 @@ En este fragmento, he incluido solo el código relevante para la prueba funciona
 
 ## Pruebas de Seguridad:
    - Se ejecutan pruebas de seguridad utilizando la herramienta OWASP ZAP para identificar y corregir posibles vulnerabilidades.
+     ![image](https://github.com/andrealopezco20/ADA/assets/104209000/cb44f531-8043-46e8-bcf7-5976a179080b)
+     *Imagen original de los errores anterioes*
+![image](https://github.com/andrealopezco20/ADA/assets/104209000/c8ebd4ea-f8bf-4753-9f7e-1e89f7392c34)
+*Imagen actual despues de la modificacion de los errores*
