@@ -171,6 +171,20 @@ describe('GET /api_gestordepagos_mikonos/administrador/buscarIDPorDNI', () => {
 });
 
 ```
+### TEST eliminar por dni:
+![4dd8600f-b084-46f7-bd8f-d1f8bdfe406b](https://github.com/Pev40/IS2_ProyectoFinal/assets/104175707/be0cd0e3-2240-427d-9b98-43b1b4e45528)
+
+
+### TEST buscar por dni:
+![Captura de pantalla 2023-12-26 015949111](https://github.com/Pev40/IS2_ProyectoFinal/assets/104175707/93db8077-687b-43b4-9431-0076cec83aa6)
+
+![Captura de pantalla 2023-12-27 110131](https://github.com/Pev40/IS2_ProyectoFinal/assets/104175707/a0f18f48-fcbc-4fce-b8c3-f758c44c5362)
+
+### TEST ver lotes:
+
+![Captura de pantalla 2023-03-02 100157](https://github.com/Pev40/IS2_ProyectoFinal/assets/104175707/e319804c-8f45-4a17-9dab-1e6a37753af7)
+
+
 
 ## Pruebas Funcionales:
    - Se realizan pruebas funcionales con el framework Selenium o Appium para garantizar el correcto funcionamiento de la aplicación.
