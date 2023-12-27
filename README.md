@@ -10,6 +10,7 @@ Se ha formado un equipo conformado por 6 integrantes, quienes trabajarán en con
 - Jharold Alonso Mayorga Villena
 - Andrea del Rosario López Condori
 - Piero Vizcarra Vargas
+- Ancel Alain Fernando Cruz Chaiña
 
 ## Selección del Proyecto de Software
 
