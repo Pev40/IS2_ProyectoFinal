@@ -85,6 +85,7 @@ const DialogCreateUsuarios = () => {
                 {...textFieldStyles}
                 {...register(usuariosFields.name)}
                 label="Nombre"
+                id="nombre"
                 error={errors[usuariosFields.name]?.message && true}
                 helperText={errors[usuariosFields.name]?.message}
               />
@@ -92,6 +93,7 @@ const DialogCreateUsuarios = () => {
                 {...textFieldStyles}
                 {...register(usuariosFields.lastName)}
                 label="Apellido"
+                id="apellido"
                 error={errors[usuariosFields.lastName]?.message && true}
                 helperText={errors[usuariosFields.lastName]?.message}
               />
@@ -99,6 +101,7 @@ const DialogCreateUsuarios = () => {
                 {...textFieldStyles}
                 {...register(usuariosFields.dni)}
                 label="DNI"
+                id="dni"
                 error={errors[usuariosFields.dni]?.message && true}
                 helperText={errors[usuariosFields.dni]?.message}
               />
@@ -106,6 +109,7 @@ const DialogCreateUsuarios = () => {
                 {...textFieldStyles}
                 {...register(usuariosFields.username)}
                 label="Correo electronico"
+                id="correo"
                 error={errors[usuariosFields.username]?.message && true}
                 helperText={errors[usuariosFields.username]?.message}
               />
@@ -115,6 +119,7 @@ const DialogCreateUsuarios = () => {
                 {...register(usuariosFields.password)}
                 label="Contraseña"
                 type="password"
+                id="contrasena"
                 error={errors[usuariosFields.password]?.message && true}
                 helperText={errors[usuariosFields.password]?.message}
               />
@@ -123,6 +128,7 @@ const DialogCreateUsuarios = () => {
                 {...register(usuariosFields.confirmPassword)}
                 label="Confirmar contraseña"
                 type="password"
+                id="confirmar_contrasena"
                 error={errors[usuariosFields.confirmPassword]?.message && true}
                 helperText={errors[usuariosFields.confirmPassword]?.message}
               />

@@ -48,6 +48,7 @@ const LoginForm = () => {
           {...register(loginFields.password)}
           label="Contraseña"
           type="password"
+          
           error={errors[loginFields.password]?.message && true}
           helperText={errors[loginFields.password]?.message}
         />
