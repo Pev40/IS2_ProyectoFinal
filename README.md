@@ -276,6 +276,10 @@ if __name__ == "__main__":
    - Se llevan a cabo pruebas de rendimiento utilizando la herramienta JMeter para evaluar el desempeño de la aplicación bajo diferentes condiciones.
    ![image](https://github.com/Pev40/IS2_ProyectoFinal/assets/104209000/6eed563c-6f41-4297-ba7e-066a4fdf0dc4)
    *Imagen Prueba de Fallo*
+![image](https://github.com/Pev40/IS2_ProyectoFinal/assets/104209000/09a855a7-5dbe-46ba-af4a-94a1894f4d81)
+*Imagen Prueba de Exito*
+
+
 ## Pruebas de Seguridad:
    - Se ejecutan pruebas de seguridad utilizando la herramienta OWASP ZAP para identificar y corregir posibles vulnerabilidades.
    ![image](https://github.com/andrealopezco20/ADA/assets/104209000/cb44f531-8043-46e8-bcf7-5976a179080b)
