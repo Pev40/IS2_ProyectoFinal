@@ -4,13 +4,7 @@
 
 Este proyecto consiste en la implementación de un pipeline de CI/CD para el desarrollo y evolución de una aplicación web. La aplicación debe contar con una interfaz gráfica de usuario, una base de datos (puede ser MySql, SQLite, MongoDB, Neo4J u otro), y seguir los patrones y estilos de arquitectura establecidos. Además, se deben aplicar prácticas de desarrollo de software como Domain-driven Design (DDD), estilos y convenciones de codificación, Clean Code y los principios SOLID.
 
-## Equipos
 
-Se ha formado un equipo conformado por 6 integrantes, quienes trabajarán en conjunto para llevar a cabo el desarrollo y evolución de la aplicación.
-- Jharold Alonso Mayorga Villena
-- Andrea del Rosario López Condori
-- Piero Vizcarra Vargas
-- 
 ### Repositorio y Ramas
 
 Este proyecto utiliza GitHub o GitLab como repositorio de código fuente. Se han creado las siguientes ramas:
