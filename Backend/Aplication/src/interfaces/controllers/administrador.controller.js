@@ -74,7 +74,6 @@ class AdministradorController {
 
   async login(email, Password) {
     const result = administradorDb.login(email, Password);
-    console.log(email,Password);
     console.log("Controlador Resultado", result);
     const data = await result.catch((err) => {
       console.log("Controller Error: ", err);
