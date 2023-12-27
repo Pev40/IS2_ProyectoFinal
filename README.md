@@ -132,6 +132,14 @@ La construcción de software, una aplicación o un sitio web implica conocimient
 
 Los fallos y errores son inevitables si los intentamos evitar con solo nuestras capacidades humanas.
 
+### VERIFICACION DE RESPUESTAS Y STATUS 
+
+<img width="1680" alt="Screenshot 2023-12-27 at 10 57 10 AM" src="https://github.com/Pev40/IS2_ProyectoFinal/assets/26489042/cd8c75b0-83cc-45a1-bcee-14a83a062d9a">
+
+### TEST CON JTEST 
+
+<img width="722" alt="cap_test" src="https://github.com/Pev40/IS2_ProyectoFinal/assets/26489042/dfcd08a1-ffc8-488a-9ad6-5f539adb2e63">
+
 ### TEST VER CLIENTES
 
 ```
@@ -223,14 +231,6 @@ describe('GET /api_gestordepagos_mikonos/administrador/buscarIDPorDNI', () => {
 ![Captura de pantalla 2023-03-02 100157](https://github.com/Pev40/IS2_ProyectoFinal/assets/104175707/e319804c-8f45-4a17-9dab-1e6a37753af7)
 ![Captura de pantalla 2023-12-27 110131](https://github.com/Pev40/IS2_ProyectoFinal/assets/104175707/a0f18f48-fcbc-4fce-b8c3-f758c44c5362)
 
-
-### VERIFICACION DE RESPUESTAS Y STATUS 
-
-<img width="1680" alt="Screenshot 2023-12-27 at 10 57 10 AM" src="https://github.com/Pev40/IS2_ProyectoFinal/assets/26489042/cd8c75b0-83cc-45a1-bcee-14a83a062d9a">
-
-### TEST CON JTEST 
-
-<img width="722" alt="cap_test" src="https://github.com/Pev40/IS2_ProyectoFinal/assets/26489042/dfcd08a1-ffc8-488a-9ad6-5f539adb2e63">
 
 ## Pruebas Funcionales:
    - Se realizan pruebas funcionales con el framework Selenium o Appium para garantizar el correcto funcionamiento de la aplicación.
