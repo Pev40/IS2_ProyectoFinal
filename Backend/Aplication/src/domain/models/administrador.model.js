@@ -64,15 +64,11 @@ class AdministradorModel{
 
     async login(email,Password){
         const con = connectionDb.promise();
-        console.log("En la funcion")
         const RecuperacionContraseña = await con.query("CALL ComprobarPassword(?)",email);
-        console.log("En la funcion2", RecuperacionContraseña)
         let data =0,data2;
         let contrasenaGuardada = RecuperacionContraseña[0][0][0].Password;
-        console.log("Constraseña GGG: ",contrasenaGuardada)
         const bcrypt = require("bcryptjs");
         let coinciden = bcrypt.compareSync(Password,contrasenaGuardada);
-            console.log('Aceptado? : ',coinciden);
                 if(coinciden){
                     data2 = await this.verToken(email);
                     console.log('error bycryps: ',data2);
