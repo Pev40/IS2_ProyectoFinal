@@ -316,7 +316,7 @@ if __name__ == "__main__":
 
 *- Prueba Funcional de Ajustes - Proyecciones - Mantenimiento*
 El archivo `Ajustes.py` contiene un conjunto de pruebas funcionales utilizando el framework de testing `pytest` y la biblioteca `selenium` para realizar pruebas automatizadas en una aplicación web. A continuación, se proporciona una descripción de las principales funciones y la estructura del código:
-```
+```python
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -384,8 +384,11 @@ def resultados_ajustes(driver):
 if __name__ == "__main__":
     pytest.main()
 ```
+![Captura de pantalla 2023-12-27 120827](https://github.com/Pev40/IS2_ProyectoFinal/assets/104182996/d998e38b-9199-4a06-a5cf-50a5c358e7b8)
+
+
 El archivo `Proyecciones.py` contiene un conjunto de pruebas funcionales utilizando el framework de testing `pytest` y la biblioteca `selenium` para realizar pruebas automatizadas en una aplicación web. A continuación, se proporciona una descripción de las principales funciones y la estructura del código:
-```
+```python
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -489,10 +492,12 @@ if __name__ == "__main__":
     pytest.main()
 
 ```
+![Captura de pantalla 2023-12-27 120843](https://github.com/Pev40/IS2_ProyectoFinal/assets/104182996/f7bb468a-5572-493d-bcea-6d54615667cb)
+
 
 
 El archivo `Mantenimiento.py` contiene un conjunto de pruebas funcionales utilizando el framework de testing `pytest` y la biblioteca `selenium` para realizar pruebas automatizadas en una aplicación web. A continuación, se proporciona una descripción de las principales funciones y la estructura del código:
-```
+```python
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -570,6 +575,9 @@ if __name__ == "__main__":
     pytest.main()
 
 ```
+![Captura de pantalla 2023-12-27 120901](https://github.com/Pev40/IS2_ProyectoFinal/assets/104182996/91939b39-9327-4f35-a864-7956450c9ecd)
+
+
 
 ## Pruebas de Performance:
    - Se llevan a cabo pruebas de rendimiento utilizando la herramienta JMeter para evaluar el desempeño de la aplicación bajo diferentes condiciones.
