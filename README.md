@@ -94,7 +94,83 @@ Además, se espera que la respuesta del servidor coincida con una estructura esp
 
 ![image](https://github.com/andrealopezco20/ADA/assets/104209000/d824d661-5edb-4cd2-9e19-0957ce41777b)
 
+### TEST VER CLIENTES
 
+```
+const request = require('supertest');
+const express = require('express');
+const app = express();
+
+const clientesRouter = require('../routes/clientes.router'); 
+
+app.use(express.json());
+app.use('/clientes', clientesRouter);
+
+describe('GET /clientes', () => {
+  test('should respond with JSON', async () => {
+    const response = await request(app)
+      .get('/clientes');
+
+    expect(response.status).toBe(200); 
+    expect(response.header['content-type']).toMatch(/json/);
+    expect(Array.isArray(response.body)).toBe(true); // Verifica que la respuesta sea un array
+    expect(response.body.length).toBeGreaterThan(0); // Verifica que el array no esté vacío
+  });
+});
+```
+
+### TEST LOGIN
+
+```
+const request = require('supertest');
+const express = require('express');
+const app = express();
+const loginRouter = require('../routes/login.router');
+
+app.use(express.json());
+app.use('/login', loginRouter);
+
+describe('POST /login', () => {
+  test('should respond with JSON', async () => {
+    const response = await request(app)
+      .post('/login')
+      .send({
+        email: 'IS2@unsa.edu.com',
+        Password: 'CSUNSA',
+      });
+
+    expect(response.status).toBe(200);
+  });
+});
+```
+
+### TEST BUSCAR ADMIN BY DNI
+
+```
+const request = require('supertest');
+const express = require('express');
+const app = express();
+
+// Importa tu configuración de la aplicación y tus rutas
+const routerApiMikonos = require('../routes/administrador.router');  // Ajusta la ruta según la ubicación real de tu aplicación
+
+app.use(express.json());
+app.use('/api_gestordepagos_mikonos/administrador', routerApiMikonos);
+
+describe('GET /api_gestordepagos_mikonos/administrador/buscarIDPorDNI', () => {
+    
+    let dni = 29573830;
+    test('should respond with JSON containing idAdministrador', async () => {
+    const response = await request(app).get('/api_gestordepagos_mikonos/administrador/buscarIDPorDNI?DNI='+dni);
+
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({
+      idAdministrador: 94
+    });
+  });
+});
+
+```
 
 ## Pruebas Funcionales:
    - Se realizan pruebas funcionales con el framework Selenium o Appium para garantizar el correcto funcionamiento de la aplicación.
