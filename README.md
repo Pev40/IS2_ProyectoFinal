@@ -335,3 +335,14 @@ if __name__ == "__main__":
      *Imagen original de los errores anterioes*
 ![image](https://github.com/andrealopezco20/ADA/assets/104209000/c8ebd4ea-f8bf-4753-9f7e-1e89f7392c34)
 *Imagen actual despues de la modificacion de los errores*
+
+
+## Referencia de la metologia utilizada
+   - A continuacion, se muestra los avances y progresos que se fueron controlando mientras se avanzaba en el proyecto:
+![image](https://github.com/Pev40/IS2_ProyectoFinal/assets/104171954/f8c5ad73-b668-4716-9333-7d273c5244b8)
+
+
+ - En nuestra dinámica de trabajo, hemos implementado una integración eficaz entre Trello y GitHub para optimizar el seguimiento y avance de cada tarea y proceso en nuestros proyectos. Utilizamos Trello como nuestra plataforma principal para la gestión de proyectos, donde creamos tableros dedicados a cada iniciativa. En estos tableros, establecemos listas que representan diferentes etapas del proceso, como "Por hacer", "En progreso" y "Completado". Cada tarea específica se presenta como una tarjeta en el tablero, proporcionando detalles clave y asignando responsabilidades.
+
+
+ - La interfaz gráfica de GitHub proporciona una representación visual detallada de la contribución de cada miembro del equipo a través de commits, ramas y modificaciones en el código. La sección de contribuciones en el perfil de cada colaborador ofrece un gráfico cronológico que destaca la actividad diaria, evidenciando la frecuencia y la cantidad de commits realizados. Este registro visual no solo muestra el compromiso individual de cada integrante, sino que también revela la evolución del proyecto a lo largo del tiempo.
