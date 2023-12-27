@@ -44,6 +44,16 @@ const PagosDialog = () => {
     setDolar,
   } = usePagos();
 
+  const divisas = [
+    { id: 1, label: "Dolar" },
+    { id: 2, label: "Sol" },
+  ]
+
+  const proyectos = [
+    { id: 1, label: "UNSA" },
+    { id: 2, label: "UCSM" },
+    { id: 3, label: "UCSP" },
+  ]
   const [cookies] = useCookies(["pagos_mykonos_token"]);
 
   const { openSnackbar } = useSnackbar();
@@ -61,9 +71,11 @@ const PagosDialog = () => {
 
   const handleOpenDialog = async () => {
     const _clients = await apiMykonos.clients.getClients(true);
+    console.log(_clients);
     const _lots = await apiMykonos.lots.getLotsLN(true);
+    console.log(_lots);
     const _dolar = await apiMykonos.divisas.getDolar();
-
+    console.log(_dolar);
     setClients(_clients);
     setLots(_lots);
     setDolar(_dolar);
@@ -72,7 +84,7 @@ const PagosDialog = () => {
       {
         label: "Datos del pago",
         component: (
-          <FormStepOne lots={_lots} clients={_clients} dolar={_dolar} />
+          <FormStepOne projects={proyectos} lots={_lots} clients={_clients} dolar={_dolar} divisas={divisas} />
         ),
       },
       {

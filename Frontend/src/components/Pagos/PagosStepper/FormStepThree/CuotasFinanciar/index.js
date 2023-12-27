@@ -1,5 +1,3 @@
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 import {
   TableContainer,
   Table,
@@ -15,7 +13,9 @@ import {
   useListCuotasFinanciar,
 } from "contexts/PagosContext/CuotasFinanciarContext";
 import { cuotasFields, pagosFields } from "models/Pagos.model";
+import { useEffect } from "react";
 import { generarArrayCuotas, roundJS } from "utils/cuotas";
+
 import { getDateSameDayNextMonth } from "utils/date";
 import CuotaFinanciar from "./CuotaFinanciar";
 
@@ -42,6 +42,7 @@ const CuotasFinanciar = () => {
       let saldo = saldoFinanciar;
       const initialEndDay = date.getDate();
 
+      // saldoFinanciar
       const coutasFinanciar = generarArrayCuotas(nCuotas, saldo);
       saldo -= coutasFinanciar[0];
       _cuotasFinanciar[0] = {};
@@ -54,6 +55,7 @@ const CuotasFinanciar = () => {
         _cuotasFinanciar[i] = {};
         const currentDate = date;
 
+        /* Fecha */
         date = getDateSameDayNextMonth(
           currentDate.getFullYear(),
           currentDate.getMonth(),
@@ -61,6 +63,7 @@ const CuotasFinanciar = () => {
           initialEndDay
         );
         saldo -= coutasFinanciar[i];
+        /* Monto */
 
         _cuotasFinanciar[i].n = i + 1;
         _cuotasFinanciar[i].fecha = date;
@@ -127,4 +130,3 @@ const CuotasFinanciar = () => {
 };
 
 export default CuotasFinanciar;
-

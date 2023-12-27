@@ -56,6 +56,7 @@ export function generarArrayCuotas(CantidadCoutas, Monto) {
   acumulador = roundJS(couta * (CantidadCoutas - 1));
   Monto = Monto - acumulador;
   ArrayCoutas[ArrayCoutas.length - 1] = roundJS(Monto);
+  console.log("Array de Coutas: ", ArrayCoutas);
   return ArrayCoutas;
 }
 
