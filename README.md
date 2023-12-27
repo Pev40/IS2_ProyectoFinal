@@ -136,6 +136,9 @@ El archivo `pruebas.py` contiene un conjunto de pruebas funcionales utilizando e
 
 Es importante tener en cuenta que algunas acciones dentro de los métodos de las clases `CustomerPage` pueden estar comentadas, como la eliminación de un usuario. Además, puede ser necesario ajustar las rutas de los elementos web (XPath, ID, NAME, etc.) según la estructura específica de la interfaz de la aplicación que estás probando.
 
+![Captura de pantalla 2023-12-27 094341](https://github.com/Pev40/IS2_ProyectoFinal/assets/104209000/fb004eae-5898-4ad9-ac20-3af15584c424)
+
+
 5. **Pruebas de Performance:**
    - Se llevan a cabo pruebas de rendimiento utilizando la herramienta JMeter para evaluar el desempeño de la aplicación bajo diferentes condiciones.
 
