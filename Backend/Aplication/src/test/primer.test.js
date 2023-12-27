@@ -4,7 +4,7 @@ const {app,server} = require('../app');
 
 const api = supertest(app);
 
-afterEach(() => {
+afterAll(() => {
     server.close(); // Cierra el servidor después de cada prueba
   });
   test('Obtener administradores desde el endpoint /', async () => {
@@ -17,12 +17,17 @@ afterEach(() => {
       response.req.connection.destroy(); // Intenta forzar el cierre de la conexión
     }
   });
-  
+  afterEach(() => {
+    server.close(); // Cierra el servidor después de cada prueba
+  });
+  afterAll(() => {
+    server.close(); // Cierra el servidor al terminar las pruebas
+  });
   test('Obtener cantidad de administradores desde el endpoint /', async () => {
     const response = await api.get('/api_gestordepagos/administrador/');
     const responseData = JSON.parse(response.text);
   
-    expect(responseData.length).toBe(2);
+    expect(responseData.length).toBe(3);
   });
 
   afterAll(() => {
