@@ -192,12 +192,12 @@ describe('GET /api_gestordepagos_mikonos/administrador/buscarIDPorDNI', () => {
 ### TEST buscar por dni:
 ![Captura de pantalla 2023-12-26 015949111](https://github.com/Pev40/IS2_ProyectoFinal/assets/104175707/93db8077-687b-43b4-9431-0076cec83aa6)
 
-![Captura de pantalla 2023-12-27 110131](https://github.com/Pev40/IS2_ProyectoFinal/assets/104175707/a0f18f48-fcbc-4fce-b8c3-f758c44c5362)
+
 
 ### TEST ver lotes:
 
 ![Captura de pantalla 2023-03-02 100157](https://github.com/Pev40/IS2_ProyectoFinal/assets/104175707/e319804c-8f45-4a17-9dab-1e6a37753af7)
-
+![Captura de pantalla 2023-12-27 110131](https://github.com/Pev40/IS2_ProyectoFinal/assets/104175707/a0f18f48-fcbc-4fce-b8c3-f758c44c5362)
 
 
 ### VERIFICACION DE RESPUESTAS Y STATUS 
