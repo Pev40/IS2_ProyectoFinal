@@ -1,5 +1,5 @@
 const express = require('express');
-const connectionDb = require('../../config/dbconnections');
+const dbconnections = require('../../config/dbconnections');
 class PagosModel{
 
     async createPagoInicial(LoteID,Monto,FechaDePago,Saldo){

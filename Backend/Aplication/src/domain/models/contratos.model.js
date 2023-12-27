@@ -1,5 +1,5 @@
 const express = require('express');
-const connectionDb = require('../../config/dbconnections');
+const dbconnections = require('../../config/dbconnections');
 
 class ContratosModel{
     async createContratoDolar(DNI,idAdmin,idLote,MontoFinal,FechaPagoInicial){
