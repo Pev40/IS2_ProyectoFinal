@@ -340,3 +340,7 @@ if __name__ == "__main__":
  - La interfaz gráfica de GitHub proporciona una representación visual detallada de la contribución de cada miembro del equipo a través de commits, ramas y modificaciones en el código. La sección de contribuciones en el perfil de cada colaborador ofrece un gráfico cronológico que destaca la actividad diaria, evidenciando la frecuencia y la cantidad de commits realizados. Este registro visual no solo muestra el compromiso individual de cada integrante, sino que también revela la evolución del proyecto a lo largo del tiempo.
 
 ![image](https://github.com/Pev40/IS2_ProyectoFinal/assets/104171954/8e784788-5263-49a0-ba31-c7c2a8b3b33f)
+
+## REFACTORING CODE SMELL
+
+Cada integrante corrige los errores generados en el area que se le asignó, mediante las diferentes ramas que este crea para su correcto desarrollo.
