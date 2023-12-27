@@ -12,6 +12,7 @@ Se ha formado un equipo conformado por 6 integrantes, quienes trabajarán en con
 - Piero Vizcarra Vargas
 - Ancel Alain Fernando Cruz Chaiña
 - Alessander Jesus Carazas Quispe
+- Princce Yorwin Mariños Hilario
 
 ## Selección del Proyecto de Software
 
