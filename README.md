@@ -49,3 +49,36 @@ Se implementa un pipeline de CI/CD en Jenkins con las siguientes etapas y pasos:
    - Se utiliza GitHub Issues, Trello o Jira para la gestión efectiva de problemas y tareas, permitiendo un seguimiento adecuado del progreso del proyecto.
 
 El pipeline de CI/CD se ha implementado de manera integral, abarcando desde la construcción automática hasta la gestión de issues, asegurando un proceso de desarrollo continuo y una entrega continua de la aplicación web.
+
+ 
+
+## UNIT TEST 
+
+¿Qué es el Unit Testing?
+
+El Unit testing, son trozos de código diseñados para comprobar que el código principal está funcionando como esperábamos. Estas pruebas forman parte de los diferentes procedimientos que podemos llevar a cabo en una metodología ágil.
+
+El proceso que se lleva a cabo consta de tres partes:
+
+Arrange: donde se definen los requisitos que debe cumplir el código principal.
+
+Act: el proceso de creación, donde vamos acumulando los resultados que analizaremos.
+
+Asert: se considera el momento en que comprobamos si los resultados agrupados son correctos o incorrectos. Dependiendo del resultado, se valida y continúa, o se repara, de forma que el error desaparezca.
+
+Para ver si hay errores de integración es necesario realizar otro tipo de pruebas de software conjuntas y de esta manera comprobar la efectividad total del código.
+
+¿Por qué hacer pruebas y por qué son tan importantes?
+
+Hacer unit testing o pruebas es la forma de asegurarse que lo que queremos que haga nuestro programa, lo haga, y lo haga bien.
+
+La construcción de software, una aplicación o un sitio web implica conocimiento, experiencia, talento, capacidad intelectual y un punto de arte. Es decir, es una labor muy difícil, y falta aún mucho para que eso cambie a mejor.
+
+Los fallos y errores son inevitables si los intentamos evitar con solo nuestras capacidades humanas.
+
+<img width="722" alt="cap_test" src="https://github.com/Pev40/IS2_ProyectoFinal/assets/26489042/427ed44a-8297-4b7a-b20b-fa966341451b">
+
+
+
+
+
