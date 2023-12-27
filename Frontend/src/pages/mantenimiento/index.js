@@ -260,10 +260,10 @@ function Mantenimiento() {
               value={loteSeleccionado ? loteSeleccionado.Estado : ""}
               onChange={handleChange}
             >
-              <option value="Disponible">Disponible</option>
-              <option value="Vendido">Vendido</option>
-              <option value="Reservado">Reservado</option>
-              <option value="Bloqueado">Bloqueado</option>
+              <option value="Disponible" id="1-D">Disponible</option>
+              <option value="Vendido" id="2-V">Vendido</option>
+              <option value="Reservado" id="3-R">Reservado</option>
+              <option value="Bloqueado" id="4-B">Bloqueado</option>
             </select>
           </FormGroup>
         </ModalBody>
