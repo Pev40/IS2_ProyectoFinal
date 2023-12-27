@@ -172,6 +172,11 @@ describe('GET /api_gestordepagos_mikonos/administrador/buscarIDPorDNI', () => {
 
 ```
 
+### VERIFICACION DE RESPUESTAS Y STATUS 
+
+<img width="1680" alt="Screenshot 2023-12-27 at 10 57 10 AM" src="https://github.com/Pev40/IS2_ProyectoFinal/assets/26489042/cd8c75b0-83cc-45a1-bcee-14a83a062d9a">
+
+
 ## Pruebas Funcionales:
    - Se realizan pruebas funcionales con el framework Selenium o Appium para garantizar el correcto funcionamiento de la aplicación.
 
