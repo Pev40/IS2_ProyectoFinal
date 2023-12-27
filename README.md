@@ -140,6 +140,9 @@ Es importante tener en cuenta que algunas acciones dentro de los métodos de las
 
 5. **Pruebas de Performance:**
    - Se llevan a cabo pruebas de rendimiento utilizando la herramienta JMeter para evaluar el desempeño de la aplicación bajo diferentes condiciones.
+  
+   ![image](https://github.com/Pev40/IS2_ProyectoFinal/assets/104209000/6eed563c-6f41-4297-ba7e-066a4fdf0dc4)
+   *Imagen Prueba de Fallo*
 
 **Ejemplo de Pruebas Funcionales**
 
