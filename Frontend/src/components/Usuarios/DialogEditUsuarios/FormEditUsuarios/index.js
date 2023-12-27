@@ -63,6 +63,7 @@ const FormEditUsuarios = ({ setOpen, user, handleCloseDialog }) => {
           {...register(usuariosFields.password)}
           label="Contraseña actual"
           type="password"
+          name="contra"
           error={errors[usuariosFields.password]?.message && true}
           helperText={errors[usuariosFields.password]?.message}
         />
@@ -71,6 +72,7 @@ const FormEditUsuarios = ({ setOpen, user, handleCloseDialog }) => {
           {...register(usuariosFields.newPassword)}
           label="Nueva contraseña"
           type="password"
+          name="contran"
           error={errors[usuariosFields.newPassword]?.message && true}
           helperText={errors[usuariosFields.newPassword]?.message}
         />
@@ -79,13 +81,14 @@ const FormEditUsuarios = ({ setOpen, user, handleCloseDialog }) => {
           {...register(usuariosFields.confirmNewPassword)}
           label="Confirmación de nueva contraseña"
           type="password"
+          name="contraa"
           error={errors[usuariosFields.confirmNewPassword]?.message && true}
           helperText={errors[usuariosFields.confirmNewPassword]?.message}
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleCloseDialog}>Cancelar</Button>
-        <Button type="submit" variant="contained" color="success">
+        <Button name="eliminarac" onClick={handleCloseDialog}>Cancelar</Button>
+        <Button type="submit" variant="contained" color="success" name="enviar">
           Enviar
         </Button>
       </DialogActions>

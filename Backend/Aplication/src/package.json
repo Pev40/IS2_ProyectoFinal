@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "jest  --silent --coverage "
+    "test": "jest --silent --coverage "
   },
   "author": "Piero Vizcarra Vargas",
   "license": "ISC",

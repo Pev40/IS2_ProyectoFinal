@@ -69,7 +69,6 @@ class AdministradorModel{
         let contrasenaGuardada = RecuperacionContraseña[0][0][0].Password;
         const bcrypt = require("bcryptjs");
         let coinciden = bcrypt.compareSync(Password,contrasenaGuardada);
-            console.log('Aceptado? : ',coinciden);
                 if(coinciden){
                     data2 = await this.verToken(email);
                     console.log('error bycryps: ',data2);
